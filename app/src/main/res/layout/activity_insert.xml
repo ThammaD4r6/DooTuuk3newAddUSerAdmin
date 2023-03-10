@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="18dp"
+    android:scrollbars="vertical"
+    tools:context=".InsertActivity">
+
+    <TextView
+        android:id="@+id/insert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Insert Anime"
+        android:textSize="20sp"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtnameTH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Anime Name (TH)"
+        android:inputType="text"
+        android:layout_below="@+id/insert"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtnameJP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Anime Name (JP)"
+        android:inputType="text"
+        android:layout_below="@+id/edtnameTH"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtnameEN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Anime Name (EN)"
+        android:inputType="text"
+        android:layout_below="@id/edtnameJP"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtsynopsis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Synopsis"
+        android:inputType="text"
+        android:layout_below="@+id/edtnameEN"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtgenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/edtsynopsis"
+        android:hint="Genre"
+        android:inputType="text" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtepisode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Episode"
+        android:inputType="number"
+        android:layout_toRightOf="@id/edtgenre"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="257dp"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edttype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Type"
+        android:layout_toRightOf="@id/edtepisode"
+        android:layout_marginTop="257dp"
+        android:layout_marginLeft="20dp"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtseason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Season"
+        android:inputType="text"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/edtgenre"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtyear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="310dp"
+        android:layout_toRightOf="@id/edtseason"
+        android:hint="Year"
+        android:inputType="number" />
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtairdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Air Date"
+        android:inputType="date"
+        android:layout_below="@id/edtseason"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtenddate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="End Date"
+        android:inputType="date"
+        android:layout_toRightOf="@id/edtairdate"
+        android:layout_marginTop="363dp"
+        android:layout_marginLeft="20dp"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtstatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="363dp"
+        android:layout_marginLeft="20dp"
+        android:hint="Status"
+        android:inputType="text"
+        android:layout_toRightOf="@id/edtenddate"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtstudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Studios"
+        android:inputType="text"
+        android:layout_below="@id/edtairdate"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtsource"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Source"
+        android:inputType="text"
+        android:layout_toRightOf="@id/edtstudio"
+        android:layout_marginTop="416dp"
+        android:layout_marginLeft="20dp"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtpic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Insert Anime Picture"
+        android:inputType="text"
+        android:layout_below="@id/edtstudio"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/insertbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="#EE1ECE60"
+        android:onClick="addAnime"
+        android:text="Insert Anime"
+        android:textColor="#FFF"
+        android:textSize="15sp"
+        android:layout_below="@id/edtpic"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@color/black"
+        android:onClick="reset"
+        android:text="Reset"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_below="@id/insertbtn"/>
+
+
+
+
+
+</RelativeLayout>
