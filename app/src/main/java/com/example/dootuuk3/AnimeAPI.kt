@@ -9,6 +9,9 @@ interface AnimeAPI {
     @GET("allanime")
     fun retrieveAnime():Call<List<AnimeClass>>
 
+    @GET("animewinter2023")
+    fun retrieveAnimewinter2023():Call<List<AnimeClass>>
+
     @GET("random")
     fun randomAnime():Call<List<AnimeClass>>
 

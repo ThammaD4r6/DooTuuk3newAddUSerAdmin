@@ -25,9 +25,19 @@ RecyclerView.Adapter<DetailAdapter.ViewHolder>(){
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val bindingRD = holder.bindingRD
 
-        bindingRD.NameTH?.text = "ชื่อเรื่อง (ไทย) : "+ animeListRD!![position].NameTH
-        bindingRD.NameJP?.text = "ชื่อเรื่อง (ญี่ปุ่น) : "+ animeListRD!![position].NameJP
-        bindingRD.NameJP?.text = "เรื่องย่อ : "+ animeListRD!![position].Synopsis
+        bindingRD.NameTH?.text = animeListRD!![position].NameTH
+        bindingRD.NameJP?.text = animeListRD!![position].NameJP
+        bindingRD.NameEN?.text = animeListRD!![position].NameEN
+        bindingRD.Episode?.text = animeListRD!![position].Episode.toString()
+        bindingRD.Type?.text = animeListRD!![position].Type
+        bindingRD.Genre?.text = animeListRD!![position].Genre
+        bindingRD.Season?.text = animeListRD!![position].Season
+        bindingRD.Year?.text = animeListRD!![position].Year.toString()
+        bindingRD.AirDate?.text = animeListRD!![position].Air_Date
+        bindingRD.EndDate?.text = animeListRD!![position].End_Date
+        bindingRD.Studio?.text = animeListRD!![position].Studio
+        bindingRD.Status?.text = animeListRD!![position].Status
+        bindingRD.Synopsis?.text = animeListRD!![position].Synopsis
 
         Glide.with(context).load(animeListRD!![position].Picture).into(bindingRD.Picture)
     }

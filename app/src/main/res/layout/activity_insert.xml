@@ -11,11 +11,13 @@
 
     <TextView
         android:id="@+id/insert"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:text="Insert Anime"
-        android:textSize="20sp"/>
+        android:textSize="25sp"
+        android:textStyle="bold"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edtnameTH"
@@ -166,7 +168,6 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         android:layout_below="@id/insertbtn"/>
-
 
 
 

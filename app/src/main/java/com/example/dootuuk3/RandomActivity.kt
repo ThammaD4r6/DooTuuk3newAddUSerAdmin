@@ -21,8 +21,6 @@ class RandomActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bindingRD = ActivityRandomBinding.inflate(layoutInflater)
         setContentView(bindingRD.root)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar
 
         bindingRD.recyclerView2.adapter = DetailAdapter(this.animeListRD, applicationContext)
         bindingRD.recyclerView2.layoutManager = LinearLayoutManager(applicationContext)
@@ -72,7 +70,7 @@ class RandomActivity : AppCompatActivity() {
                         )
                     }
 
-                    bindingRD.recyclerView2.adapter = AnimeAdapter(animeListRD, applicationContext)
+                    bindingRD.recyclerView2.adapter = DetailAdapter(animeListRD, applicationContext)
                 }
 
                 override fun onFailure(call: Call<List<AnimeClass>>, t: Throwable) {

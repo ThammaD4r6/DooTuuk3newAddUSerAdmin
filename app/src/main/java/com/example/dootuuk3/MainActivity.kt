@@ -26,5 +26,13 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RandomActivity::class.java)
             startActivity(intent)
         }
+        binding.search.setOnClickListener() {
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
+        binding.add.setOnClickListener() {
+            val intent = Intent(this, InsertActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

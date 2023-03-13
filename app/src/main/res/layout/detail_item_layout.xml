@@ -1,41 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:scrollbars="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
-    <ImageView
-        android:id="@+id/Picture"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="20dp"
-        android:paddingTop="8dp"/>
-    <TextView
-        android:id="@+id/NameTH"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"
-        android:textSize="20sp"
-        android:paddingTop="20dp"
-        android:layout_below="@+id/Picture"
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/NameJP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"
-        android:textSize="20sp"
-        android:layout_below="@id/NameTH"
-        android:paddingTop="20dp" />
-    <TextView
-        android:id="@+id/Synopsis"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/NameJP"
-        android:paddingTop="20dp"
-        android:text="test"
-        android:textSize="15sp" />
+        android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/Picture"
+            android:layout_width="180dp"
+            android:layout_height="280dp"
+            android:layout_marginLeft="20dp"
+            android:paddingTop="8dp"/>
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="เรื่องย่อ"
+            android:paddingTop="8dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_below="@+id/Picture"/>
+        <TextView
+            android:id="@+id/txt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Synopsis"
+            android:text="ชื่อเรื่อง (ไทย)"
+            android:textSize="20sp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/NameTH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt2"
+            android:text="test"
+            android:textSize="18sp"
+            android:paddingTop="8dp" />
+        <TextView
+            android:id="@+id/txt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/NameTH"
+            android:text="ชื่อเรื่อง (ญี่ปุ่น)"
+            android:textSize="20sp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/NameJP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt3"
+            android:text="test"
+            android:textSize="18sp"
+            android:paddingTop="8dp" />
+        <TextView
+            android:id="@+id/txt4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/NameJP"
+            android:text="ชื่อเรื่อง (อังกฤษ)"
+            android:textSize="20sp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/NameEN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt4"
+            android:text="test"
+            android:textSize="18sp"
+            android:paddingTop="8dp" />
+        <TextView
+            android:id="@+id/Synopsis"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/txt1"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="test"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/txt5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/NameEN"
+            android:text="จำนวนตอน"
+            android:textSize="20sp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/Episode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/txt5"
+            android:text="test"
+            android:layout_below="@id/NameEN"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:paddingTop="8dp" />
+        <TextView
+            android:id="@+id/txt6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/NameEN"
+            android:paddingLeft="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/Episode"
+            android:text="ประเภท"
+            android:textSize="20sp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/Type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/NameEN"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/txt6"
+            android:paddingTop="8dp"
+            android:text="test"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/txt7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt5"
+            android:text="แนวเรื่อง"
+            android:textSize="20sp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/Genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt7"
+            android:paddingTop="8dp"
+            android:text="test"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txt8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Genre"
+            android:paddingTop="8dp"
+            android:text="ฤดู"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/Season"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/txt8"
+            android:text="test"
+            android:layout_below="@id/Genre"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:paddingTop="8dp" />
+        <TextView
+            android:id="@+id/txt9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Genre"
+            android:paddingLeft="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/Season"
+            android:text="ปีที่ฉาย"
+            android:textSize="20sp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/Year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Genre"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/txt9"
+            android:paddingTop="8dp"
+            android:text="test"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txt10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Season"
+            android:paddingTop="8dp"
+            android:text="วันที่ฉาย"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/Air_Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/txt10"
+            android:text="test"
+            android:layout_below="@id/Season"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:paddingTop="8dp" />
+        <TextView
+            android:id="@+id/txt11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Season"
+            android:paddingLeft="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/Air_Date"
+            android:text="วันที่ฉายจบ"
+            android:textSize="20sp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/End_Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Season"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/txt11"
+            android:paddingTop="8dp"
+            android:text="test"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txt12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Air_Date"
+            android:paddingTop="8dp"
+            android:text="สตูดิโอ"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/Studio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/txt12"
+            android:text="test"
+            android:layout_below="@id/Air_Date"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:paddingTop="8dp" />
+        <TextView
+            android:id="@+id/txt13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Air_Date"
+            android:paddingLeft="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/Studio"
+            android:text="สถานะ"
+            android:textSize="20sp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/Status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Air_Date"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/txt13"
+            android:paddingTop="8dp"
+            android:text="test"
+            android:textSize="18sp" />
+
+
+    </RelativeLayout>
 
 </LinearLayout>

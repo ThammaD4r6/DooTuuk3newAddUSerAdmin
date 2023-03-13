@@ -25,20 +25,10 @@
             android:paddingTop="20dp"
             android:textStyle="bold"/>
         <TextView
-            android:id="@+id/NameJP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/Picture"
-            android:layout_below="@+id/NameTH"
-            android:text="test"
-            android:textSize="20sp"
-            android:paddingTop="20dp"
-            android:textStyle="bold"/>
-        <TextView
             android:id="@+id/Synopsis"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/NameJP"
+            android:layout_below="@+id/NameTH"
             android:paddingTop="20dp"
             android:layout_toRightOf="@+id/Picture"
             android:text="test"

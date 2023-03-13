@@ -22,17 +22,7 @@ class AllAnimeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        binding = ActivityAllAnimeBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar
-//
-//        binding.recyclerView.layoutManager = GridLayoutManager(this, 1)
-//        binding.recyclerView.addItemDecoration(
-//            DividerItemDecoration(
-//                binding.recyclerView.getContext(), DividerItemDecoration.VERTICAL
-//            )
-//        )
+
         binding = ActivityAllAnimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -57,7 +47,7 @@ class AllAnimeActivity : AppCompatActivity() {
             .build()
             .create(AnimeAPI::class.java)
 
-        serv.retrieveAnime()
+        serv.retrieveAnimewinter2023()
             .enqueue(object : Callback<List<AnimeClass>> {
 
                 override fun onResponse(
@@ -88,7 +78,7 @@ class AllAnimeActivity : AppCompatActivity() {
                     }
 
                     binding.recyclerView.adapter = AnimeAdapter(animeList, applicationContext)
-                    binding.anime.text = "All Anime : "+animeList.size.toString()
+                    binding.anime.text = "อนิเมะทั้งหมด : "+animeList.size.toString()+" เรื่อง"
                 }
 
                 override fun onFailure(call: Call<List<AnimeClass>>, t: Throwable) {
