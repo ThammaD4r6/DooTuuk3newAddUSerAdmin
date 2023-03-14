@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".SearchActivity">
+    tools:context=".AllDetailActivity">
 
     <LinearLayout
         android:id="@+id/lnlayout1"
@@ -14,29 +14,16 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="10dp">
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="200dp"
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Anime name">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/search1"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textSize="20sp"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search"
-            android:layout_marginLeft="10dp"
-            android:textSize="20sp"/>
+            android:hint="Search anime name">
+        </androidx.appcompat.widget.SearchView>
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/animesearch"
+        android:id="@+id/anime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="All Anime"
@@ -45,10 +32,10 @@
         android:layout_below="@+id/lnlayout1"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView3"
+        android:id="@+id/recyclerView4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:layout_below="@+id/animesearch"/>
+        android:layout_below="@+id/anime"/>
 
 </RelativeLayout>

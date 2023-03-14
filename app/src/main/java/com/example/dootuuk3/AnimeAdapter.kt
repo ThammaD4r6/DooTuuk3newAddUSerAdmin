@@ -1,21 +1,26 @@
 package com.example.dootuuk3
 
+
+import AllDetailActivity
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.bumptech.glide.Glide
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.dootuuk3.databinding.AnimeItemLayoutBinding
-import com.example.dootuuk3.AnimeClass
+
 
 class AnimeAdapter (val items :List<AnimeClass>, val context: Context):
     RecyclerView.Adapter<AnimeAdapter.ViewHolder>() {
 
     inner class ViewHolder(view:View, val binding: AnimeItemLayoutBinding): RecyclerView.ViewHolder(view){
         init {
-
+            binding.Picture.setOnClickListener{
+                val intent = Intent(view.context, AllDetailActivity::class.java)
+                view.context.startActivity(intent)
+            }
         }
     }
 
@@ -36,6 +41,4 @@ class AnimeAdapter (val items :List<AnimeClass>, val context: Context):
     override fun getItemCount(): Int {
         return items.size
     }
-
-
 }

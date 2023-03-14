@@ -42,6 +42,7 @@ RecyclerView.Adapter<DetailAdapter.ViewHolder>(){
         Glide.with(context).load(animeListRD!![position].Picture).into(bindingRD.Picture)
     }
 
+
     override fun getItemCount(): Int {
         return animeListRD!!.size
     }

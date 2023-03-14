@@ -1,13 +1,12 @@
 package com.example.dootuuk3
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.dootuuk3.databinding.ActivitySearchBinding
+import com.example.dootuuk3.databinding.ActivityDetailBinding
+import com.example.dootuuk3.databinding.ActivityRandomBinding
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,40 +14,34 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class SearchActivity : AppCompatActivity() {
-    private lateinit var bindingSR: ActivitySearchBinding
-    var animeListSR = arrayListOf<AnimeClass>()
+class DetailActivity : AppCompatActivity() {
+    private lateinit var bindingDT: ActivityDetailBinding
+    var animeListDT = arrayListOf<AnimeClass>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar
+        bindingDT = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(bindingDT.root)
 
-        bindingSR = ActivitySearchBinding.inflate(layoutInflater)
-        setContentView(bindingSR.root)
-
-        bindingSR.recyclerView3.layoutManager = LinearLayoutManager(applicationContext)
-        bindingSR.recyclerView3.addItemDecoration(
-            DividerItemDecoration(
-                bindingSR.recyclerView3.getContext(),
+        bindingDT.recyclerView3.adapter = DetailNewAdapter(this.animeListDT, applicationContext)
+        bindingDT.recyclerView3.layoutManager = LinearLayoutManager(applicationContext)
+        bindingDT.recyclerView3.addItemDecoration(
+            DividerItemDecoration(bindingDT.recyclerView3.getContext(),
                 DividerItemDecoration.VERTICAL)
         )
     }
     override fun onResume() {
         super.onResume()
-        callAnimeData()
-    }
-
-    fun callAnimeData() {
-        animeListSR.clear();
-
+        retrievenimeID()
+    }fun retrievenimeID() {
+        animeListDT.clear();
         val serv: AnimeAPI = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:3000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(AnimeAPI::class.java)
 
-        serv.allanime()
+        serv.retrievenimeID()
             .enqueue(object : Callback<List<AnimeClass>> {
 
                 override fun onResponse(
@@ -56,7 +49,7 @@ class SearchActivity : AppCompatActivity() {
                     response: Response<List<AnimeClass>>
                 ) {
                     response.body()?.forEach {
-                        animeListSR.add(
+                        animeListDT.add(
                             AnimeClass(
                                 it.ID,
                                 it.NameTH,
@@ -78,8 +71,7 @@ class SearchActivity : AppCompatActivity() {
                         )
                     }
 
-                    bindingSR.recyclerView3.adapter = AnimeAdapter(animeListSR, applicationContext)
-                    bindingSR.animesearch.text = "อนิเมะทั้งหมด : "+animeListSR.size.toString()+" เรื่อง"
+                    bindingDT.recyclerView3.adapter = DetailNewAdapter(animeListDT, applicationContext)
                 }
 
                 override fun onFailure(call: Call<List<AnimeClass>>, t: Throwable) {
@@ -90,11 +82,6 @@ class SearchActivity : AppCompatActivity() {
                     ).show()
                 }
             })
-    }
-
-    fun clickInsert(v: View) {
-        val intent = Intent(this, InsertActivity::class.java)
-        startActivity(intent)
     }
 
 }

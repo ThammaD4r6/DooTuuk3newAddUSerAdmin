@@ -3,11 +3,13 @@ package com.example.dootuuk3
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.dootuuk3.databinding.ActivityAllAnimeBinding
 
 import retrofit2.Call
@@ -18,7 +20,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class AllAnimeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAllAnimeBinding
-    var animeList = arrayListOf<AnimeClass>()
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var searchView: SearchView
+
+    private var animeList = arrayListOf<AnimeClass>()
+    private var filteredAnimeList = arrayListOf<AnimeClass>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,19 +32,39 @@ class AllAnimeActivity : AppCompatActivity() {
         binding = ActivityAllAnimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-        binding.recyclerView.addItemDecoration(
+        recyclerView = binding.recyclerView
+        searchView = binding.searchView
+
+        recyclerView.setHasFixedSize(true)
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.addItemDecoration(
             DividerItemDecoration(
-                binding.recyclerView.getContext(),
-                DividerItemDecoration.VERTICAL)
+                recyclerView.getContext(),
+                DividerItemDecoration.VERTICAL
+            )
         )
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    filterAnimeList(newText)
+                }
+                return true
+            }
+        })
     }
+
     override fun onResume() {
         super.onResume()
         callAnimeData()
     }
 
-    fun callAnimeData() {
+    private fun callAnimeData() {
         animeList.clear();
 
         val serv: AnimeAPI = Retrofit.Builder()
@@ -77,8 +103,10 @@ class AllAnimeActivity : AppCompatActivity() {
                         )
                     }
 
-                    binding.recyclerView.adapter = AnimeAdapter(animeList, applicationContext)
-                    binding.anime.text = "อนิเมะทั้งหมด : "+animeList.size.toString()+" เรื่อง"
+                    filteredAnimeList.addAll(animeList)
+                    recyclerView.adapter = AnimeAdapter(filteredAnimeList, applicationContext)
+                    binding.anime.text =
+                        "อนิเมะทั้งหมด : " + filteredAnimeList.size.toString() + " เรื่อง"
                 }
 
                 override fun onFailure(call: Call<List<AnimeClass>>, t: Throwable) {
@@ -91,9 +119,16 @@ class AllAnimeActivity : AppCompatActivity() {
             })
     }
 
-    fun clickInsert(v: View) {
-        val intent = Intent(this, InsertActivity::class.java)
-        startActivity(intent)
-    }
+    private fun filterAnimeList(query: String) {
+        filteredAnimeList.clear()
 
+        for (anime in animeList) {
+            if (anime.NameTH.contains(query, ignoreCase = true) ||
+                anime.NameJP.contains(query, ignoreCase = true) ||
+                anime.NameEN.contains(query, ignoreCase = true)
+            ) {
+                filteredAnimeList.add(anime)
+            }
+        }
+    }
 }

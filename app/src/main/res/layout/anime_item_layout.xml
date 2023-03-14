@@ -33,6 +33,13 @@
             android:layout_toRightOf="@+id/Picture"
             android:text="test"
             android:textSize="15sp" />
+        <TextView
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="อ่านเพิ่มเติม>"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/Synopsis" />
     </RelativeLayout>
 
 </LinearLayout>
