@@ -29,6 +29,8 @@ class AllAnimeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
         binding = ActivityAllAnimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -61,10 +63,10 @@ class AllAnimeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        callAnimeData()
+        retrieveAnimewinter2023()
     }
 
-    private fun callAnimeData() {
+    private fun retrieveAnimewinter2023() {
         animeList.clear();
 
         val serv: AnimeAPI = Retrofit.Builder()

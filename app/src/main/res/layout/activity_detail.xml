@@ -16,6 +16,5 @@
         android:id="@+id/recyclerView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        tools:listitem="@layout/detail_item_layout"/>
+        android:scrollbars="vertical" />
 </RelativeLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/Picture"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="20dp"
+            android:paddingTop="8dp"/>
+        <TextView
+            android:id="@+id/NameEN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/Picture"
+            android:text="test"
+            android:textSize="20sp"
+            android:paddingTop="20dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/NameTH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/NameEN"
+            android:layout_toRightOf="@+id/Picture"
+            android:layout_marginTop="2dp"
+            android:paddingTop="20dp"
+            android:text="test"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Synopsis"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/NameTH"
+            android:paddingTop="20dp"
+            android:layout_toRightOf="@+id/Picture"
+            android:text="test"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+</LinearLayout>

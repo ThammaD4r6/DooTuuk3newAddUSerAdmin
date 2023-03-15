@@ -23,7 +23,7 @@ class DetailActivity : AppCompatActivity() {
         bindingDT = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(bindingDT.root)
 
-        bindingDT.recyclerView3.adapter = DetailNewAdapter(this.animeListDT, applicationContext)
+        bindingDT.recyclerView3.adapter = DetailAdapter(this.animeListDT, applicationContext)
         bindingDT.recyclerView3.layoutManager = LinearLayoutManager(applicationContext)
         bindingDT.recyclerView3.addItemDecoration(
             DividerItemDecoration(bindingDT.recyclerView3.getContext(),
@@ -32,8 +32,8 @@ class DetailActivity : AppCompatActivity() {
     }
     override fun onResume() {
         super.onResume()
-        retrievenimeID()
-    }fun retrievenimeID() {
+        allanime()
+    }fun allanime() {
         animeListDT.clear();
         val serv: AnimeAPI = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:3000/")
@@ -41,7 +41,7 @@ class DetailActivity : AppCompatActivity() {
             .build()
             .create(AnimeAPI::class.java)
 
-        serv.retrievenimeID()
+        serv.allanime()
             .enqueue(object : Callback<List<AnimeClass>> {
 
                 override fun onResponse(
@@ -71,7 +71,7 @@ class DetailActivity : AppCompatActivity() {
                         )
                     }
 
-                    bindingDT.recyclerView3.adapter = DetailNewAdapter(animeListDT, applicationContext)
+                    bindingDT.recyclerView3.adapter = DetailAdapter(animeListDT, applicationContext)
                 }
 
                 override fun onFailure(call: Call<List<AnimeClass>>, t: Throwable) {

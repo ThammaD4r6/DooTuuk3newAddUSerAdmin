@@ -1,7 +1,5 @@
 package com.example.dootuuk3
 
-import com.example.dootuuk3.AnimeClass
-
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,6 +8,10 @@ import retrofit2.http.*
 interface AnimeAPI {
     @GET("allanime")
     fun allanime():Call<List<AnimeClass>>
+
+    @GET("anime/search/{name}")
+    fun retrieveAnimeByName(@Path("name") name: String): Call<List<AnimeClass>>
+
 
     @GET("animenamepic/{Picture}")
     fun animedetailpic():Call<List<AnimeClass>>
@@ -27,7 +29,7 @@ interface AnimeAPI {
 
     @GET("anime/{id}")
     fun retrievenimeID(
-        @Path("id") id: Int
+        @Path("id") id: String
     ):  Call<AnimeClass>
 
     @GET("animedetail/{id}")
@@ -86,5 +88,7 @@ interface AnimeAPI {
             return AnimeClient
         }
     }
+
+
 
 }

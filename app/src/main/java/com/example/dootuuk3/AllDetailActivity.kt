@@ -1,21 +1,13 @@
-import android.content.Intent
+package com.example.dootuuk3
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.SearchView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.dootuuk3.AnimeAPI
-import com.example.dootuuk3.AnimeAdapter
-import com.example.dootuuk3.AnimeClass
-import com.example.dootuuk3.InsertActivity
-import com.example.dootuuk3.databinding.ActivityAllAnimeBinding
 import com.example.dootuuk3.databinding.ActivityAllDetailBinding
+import com.example.dootuuk3.databinding.ActivityRandomBinding
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,31 +16,27 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class AllDetailActivity : AppCompatActivity() {
-
-    private lateinit var bindingDTA: ActivityAllDetailBinding
-    var animeListDTA = arrayListOf<AnimeClass>()
+    private lateinit var bindingDTT: ActivityAllDetailBinding
+    var animeListDTT = arrayListOf<AnimeClass>()
+    val client = AnimeAPI.create()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        bindingDTT = ActivityAllDetailBinding.inflate(layoutInflater)
+        setContentView(bindingDTT.root)
 
-        bindingDTA = ActivityAllDetailBinding.inflate(layoutInflater)
-        setContentView(bindingDTA.root)
-
-        bindingDTA.recyclerView4.layoutManager = LinearLayoutManager(applicationContext)
-        bindingDTA.recyclerView4.addItemDecoration(
-            DividerItemDecoration(
-                bindingDTA.recyclerView4.getContext(),
+        bindingDTT.recyclerView4.adapter = DetailNewAdapter(this.animeListDTT, applicationContext)
+        bindingDTT.recyclerView4.layoutManager = LinearLayoutManager(applicationContext)
+        bindingDTT.recyclerView4.addItemDecoration(
+            DividerItemDecoration(bindingDTT.recyclerView4.getContext(),
                 DividerItemDecoration.VERTICAL)
         )
     }
     override fun onResume() {
         super.onResume()
         allanime()
-    }
-
-    fun allanime() {
-        animeListDTA.clear();
-
+    }fun allanime() {
+        animeListDTT.clear();
         val serv: AnimeAPI = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:3000/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -63,7 +51,7 @@ class AllDetailActivity : AppCompatActivity() {
                     response: Response<List<AnimeClass>>
                 ) {
                     response.body()?.forEach {
-                        animeListDTA.add(
+                        animeListDTT.add(
                             AnimeClass(
                                 it.ID,
                                 it.NameTH,
@@ -85,8 +73,7 @@ class AllDetailActivity : AppCompatActivity() {
                         )
                     }
 
-                    bindingDTA.recyclerView4.adapter = AnimeAdapter(animeListDTA, applicationContext)
-                    bindingDTA.anime.text = "อนิเมะทั้งหมด : "+animeListDTA.size.toString()+" เรื่อง"
+                    bindingDTT.recyclerView4.adapter = DetailNewAdapter(animeListDTT, applicationContext)
                 }
 
                 override fun onFailure(call: Call<List<AnimeClass>>, t: Throwable) {
@@ -97,12 +84,6 @@ class AllDetailActivity : AppCompatActivity() {
                     ).show()
                 }
             })
-    }
-
-
-    fun clickInsert(v: View) {
-        val intent = Intent(this, InsertActivity::class.java)
-        startActivity(intent)
     }
 
 }

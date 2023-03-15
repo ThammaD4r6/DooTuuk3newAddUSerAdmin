@@ -14,11 +14,12 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="10dp">
-        <androidx.appcompat.widget.SearchView
+        <SearchView
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Search anime name">
-        </androidx.appcompat.widget.SearchView>
+        </SearchView>
 
     </LinearLayout>
 

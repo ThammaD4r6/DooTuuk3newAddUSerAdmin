@@ -1,25 +1,38 @@
 package com.example.dootuuk3
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.dootuuk3.databinding.AnimeItemLayoutBinding
 import com.example.dootuuk3.databinding.DetailItemLayoutBinding
 
-class DetailAdapter (val animeListRD: ArrayList<AnimeClass>?, val context: Context):
-RecyclerView.Adapter<DetailAdapter.ViewHolder>(){
+class DetailAdapter (val animeListRD: List<AnimeClass>, val context: Context):
+    RecyclerView.Adapter<DetailAdapter.ViewHolder>(){
 
-    class ViewHolder(view: View, val bindingRD: DetailItemLayoutBinding) :
-    RecyclerView.ViewHolder(view){
+    inner class ViewHolder(view: View, val bindingRD: DetailItemLayoutBinding, val adapter: DetailAdapter) :
+        RecyclerView.ViewHolder(view){
+        init {
+            bindingRD.Picture.setOnClickListener {
+                val item = adapter.animeListRD[adapterPosition]
+                val contextView:Context = view.context
+                val intent = Intent(contextView, DetailItemLayoutBinding::class.java)
+                intent.putExtra("ID",item.ID)
+                intent.putExtra("NameEN",item.NameEN)
+                intent.putExtra("NameJP",item.NameJP)
+                contextView.startActivity(intent)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val bindingRD = DetailItemLayoutBinding.inflate(
             LayoutInflater.from(parent.context), parent,
             false)
-        return ViewHolder(bindingRD.root,bindingRD)
+        return ViewHolder(bindingRD.root,bindingRD, this)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

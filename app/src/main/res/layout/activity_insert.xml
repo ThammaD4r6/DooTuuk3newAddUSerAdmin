@@ -168,8 +168,17 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         android:layout_below="@id/insertbtn"/>
+    
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/edtAnime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:textSize="15sp"
+        android:background="#FF9800"
+        android:padding="10dp"
+        android:layout_alignParentRight="true">
+    </androidx.appcompat.widget.AppCompatButton>
 
-
-
-
+    
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.dootuuk3
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -18,6 +19,11 @@ class InsertActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bindingInsert = ActivityInsertBinding.inflate(layoutInflater)
         setContentView(bindingInsert.root)
+
+        bindingInsert.edtAnime.setOnClickListener{
+            val intent = Intent(applicationContext, ShowEditDeleteActivity::class.java)
+            startActivity(intent)
+        }
     }
     fun reset(v: View){
         bindingInsert.edtnameTH.text?.clear()

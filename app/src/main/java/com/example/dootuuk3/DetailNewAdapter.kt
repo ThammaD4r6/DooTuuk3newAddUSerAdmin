@@ -1,59 +1,87 @@
 package com.example.dootuuk3
 
-import AllDetailActivity
-import android.content.Context
-import android.content.Intent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.dootuuk3.databinding.AnimeItemLayoutBinding
-import com.example.dootuuk3.databinding.DetailItemLayoutBinding
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dootuuk3.databinding.ActivityDetailBinding
+import com.example.dootuuk3.databinding.ActivityRandomBinding
 
-class DetailNewAdapter (val animeListDT: ArrayList<AnimeClass>?, val context: Context):
-    RecyclerView.Adapter<DetailNewAdapter.ViewHolder>(){
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-    inner class ViewHolder(view: View, val bindingDT: DetailItemLayoutBinding) :
-        RecyclerView.ViewHolder(view) {
-        init {
-            bindingDT.Picture.setOnClickListener{
-                val contextView: Context = view.context
-                val intent = Intent(contextView,AllDetailActivity::class.java)
-            }
-        }
+class DetailNewAdapter : AppCompatActivity() {
+    private lateinit var bindingDTZ: ActivityDetailBinding
+    var animeListDTZ = arrayListOf<AnimeClass>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        bindingDTZ = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(bindingDTZ.root)
+
+        bindingDTZ.recyclerView3.adapter = DetailAdapter(this.animeListDTZ, applicationContext)
+        bindingDTZ.recyclerView3.layoutManager = LinearLayoutManager(applicationContext)
+        bindingDTZ.recyclerView3.addItemDecoration(
+            DividerItemDecoration(bindingDTZ.recyclerView3.getContext(),
+                DividerItemDecoration.VERTICAL)
+        )
     }
+    override fun onResume() {
+        super.onResume()
+        allanime()
+    }fun allanime() {
+        animeListDTZ.clear();
+        val serv: AnimeAPI = Retrofit.Builder()
+            .baseUrl("http://10.0.2.2:3000/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(AnimeAPI::class.java)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val bindingDT = DetailItemLayoutBinding.inflate(
-            LayoutInflater.from(parent.context), parent,
-            false)
-        return ViewHolder(bindingDT.root,bindingDT)
-    }
+        serv.allanime()
+            .enqueue(object : Callback<List<AnimeClass>> {
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val bindingDT = holder.bindingDT
+                override fun onResponse(
+                    call: Call<List<AnimeClass>>,
+                    response: Response<List<AnimeClass>>
+                ) {
+                    response.body()?.forEach {
+                        animeListDTZ.add(
+                            AnimeClass(
+                                it.ID,
+                                it.NameTH,
+                                it.NameJP,
+                                it.NameEN,
+                                it.Synopsis,
+                                it.Genre,
+                                it.Episode,
+                                it.Type,
+                                it.Season,
+                                it.Year,
+                                it.Air_Date,
+                                it.End_Date,
+                                it.Status,
+                                it.Studio,
+                                it.Source,
+                                it.Picture
+                            )
+                        )
+                    }
 
-        bindingDT.NameTH?.text = animeListDT!![position].NameTH
-        bindingDT.NameJP?.text = animeListDT!![position].NameJP
-        bindingDT.NameEN?.text = animeListDT!![position].NameEN
-        bindingDT.Episode?.text = animeListDT!![position].Episode.toString()
-        bindingDT.Type?.text = animeListDT!![position].Type
-        bindingDT.Genre?.text = animeListDT!![position].Genre
-        bindingDT.Season?.text = animeListDT!![position].Season
-        bindingDT.Year?.text = animeListDT!![position].Year.toString()
-        bindingDT.AirDate?.text = animeListDT!![position].Air_Date
-        bindingDT.EndDate?.text = animeListDT!![position].End_Date
-        bindingDT.Studio?.text = animeListDT!![position].Studio
-        bindingDT.Status?.text = animeListDT!![position].Status
-        bindingDT.Synopsis?.text = animeListDT!![position].Synopsis
+                    bindingDTZ.recyclerView3.adapter = DetailAdapter(animeListDTZ, applicationContext)
+                }
 
-        Glide.with(context).load(animeListDT!![position].Picture).into(bindingDT.Picture)
-    }
-
-
-    override fun getItemCount(): Int {
-        return animeListDT!!.size
+                override fun onFailure(call: Call<List<AnimeClass>>, t: Throwable) {
+                    Toast.makeText(
+                        applicationContext,
+                        "Error onFailure" + t.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
     }
 
 }
