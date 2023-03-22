@@ -17,6 +17,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 class AllAnimeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAllAnimeBinding
@@ -29,13 +30,11 @@ class AllAnimeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
         binding = ActivityAllAnimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         recyclerView = binding.recyclerView
-        searchView = binding.searchView
+        searchView = binding.searchView2
 
         recyclerView.setHasFixedSize(true)
 
@@ -49,15 +48,18 @@ class AllAnimeActivity : AppCompatActivity() {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
                     filterAnimeList(newText)
+                    recyclerView.adapter?.notifyDataSetChanged()
                 }
                 return true
             }
+
         })
     }
 
@@ -121,16 +123,15 @@ class AllAnimeActivity : AppCompatActivity() {
             })
     }
 
-    private fun filterAnimeList(query: String) {
-        filteredAnimeList.clear()
-
-        for (anime in animeList) {
-            if (anime.NameTH.contains(query, ignoreCase = true) ||
-                anime.NameJP.contains(query, ignoreCase = true) ||
-                anime.NameEN.contains(query, ignoreCase = true)
-            ) {
-                filteredAnimeList.add(anime)
-            }
+    fun filterAnimeList(query: String) {
+        val regexQuery = Regex(".*${query.lowercase(Locale.getDefault())}.*")
+        val filteredList = animeList.filter { anime ->
+            anime.NameEN.lowercase(Locale.getDefault()).matches(regexQuery) ||
+                    anime.NameTH.lowercase(Locale.getDefault()).matches(regexQuery)
         }
+
+        filteredAnimeList.clear()
+        filteredAnimeList.addAll(filteredList)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 }

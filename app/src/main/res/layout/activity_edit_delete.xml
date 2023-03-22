@@ -1,231 +1,331 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="15dp"
-    android:scrollbars="vertical"
+    android:scrollbars="horizontal"
     tools:context=".EditDeleteActivity">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Edit Or Delete Anime"
-        android:textAlignment="center"
-        android:textSize="25sp"
-        android:textStyle="bold"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Anime Name (TH)"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtNameTHq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Anime name (JP)"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtnameJPq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Anime name (EN)"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtNameENq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Synopsis"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtSynopsisq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Genre"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtGenreq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Episode"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtEpisodeq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Type"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtTypeq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Season"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtSeasonq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Year"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtYearq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Air Date"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtairdateq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="End Date"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtenddateq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Status"
-        android:layout_marginTop="12dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtstatusq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Studio"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtstudioq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Source"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtsourceq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Picture"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtpictureq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/a17"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
         android:layout_marginTop="10dp"
         android:background="#69F0AE"
         android:onClick="saveAnime"
         android:text="Save"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        tools:ignore="TextContrastCheck" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
         android:layout_marginTop="10dp"
         android:background="#F88484"
         android:onClick="deleteAnime"
         android:text="Delete"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/a1"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a19"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="ID">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtID"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textColorHint="#78909C"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Anime Name (TH)">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtNameTHq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textColorHint="#78909C"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a3"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Anime name (JP)">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtnameJPq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textColorHint="#78909C"
+                    android:textSize="20sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a4"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Anime name (EN)">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtNameENq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textColorHint="#78909C"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a5"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Synopsis">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtSynopsisq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textColorHint="#78909C"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a6"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Genre">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtGenreq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textColorHint="#78909C"
+                    android:textSize="20sp"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a7"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Episode">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtEpisodeq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="number"
+                    android:textColorHint="#78909C"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a8"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Type">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtTypeq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textColorHint="#78909C"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a9"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Season">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtSeasonq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textColorHint="#78909C"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a10"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Year">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtYearq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textColorHint="#78909C"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a11"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Air Date">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtairdateq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a12"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="End Date">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtenddateq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textSize="20sp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a13"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Status"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtstatusq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a14"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Studio">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtstudioq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a15"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Source">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtsourceq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/a16"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="12dp"
+                android:hint="Picture">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtpictureq"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:inputType="text"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
 </LinearLayout>

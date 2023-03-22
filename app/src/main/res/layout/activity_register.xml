@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/textRg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:text="สมัครสมาชิก">
+
+    </TextView>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/rgUsername"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:hint="ชื่อผู้ใช้"
+        android:inputType="text"
+        android:layout_below="@+id/textRg"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/rgEmail"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="อีเมลล์"
+        android:layout_centerHorizontal="true"
+        android:inputType="text"
+        android:layout_below="@+id/rgUsername"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/rgPassword"
+        android:layout_width="400dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="รหัสผ่าน"
+        android:inputType="textPassword"
+        android:layout_below="@id/rgEmail"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/rgSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rgPassword"
+        android:layout_marginTop="10dp"
+        android:text="ลงทะเบียน"
+        android:onClick="addUser"
+        android:background="#4cbb17"
+        android:textSize="20sp"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/rgClear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rgSubmit"
+        android:layout_marginTop="10dp"
+        android:onClick="resetRG"
+        android:text="ล้าง"
+
+        android:textSize="20sp"/>
+</RelativeLayout>

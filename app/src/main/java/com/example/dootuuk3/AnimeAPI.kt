@@ -55,8 +55,16 @@ interface AnimeAPI {
         @Field("Picture") Picture: String):Call<AnimeClass>
 
     @FormUrlEncoded
-    @PUT("anime/{id}")
+    @POST("user")
+    fun InsertUser(
+        @Field("Username") Username: String,
+        @Field("Email") Email: String,
+        @Field("Password") Password: String):Call<UserClass>
+
+    @FormUrlEncoded
+    @PUT("update/{id}")
     fun updateAnime(
+        @Path("id") ID:String,
         @Field("NameTH") NameTH: String,
         @Field("NameJP") NameJP: String,
         @Field("NameEN") NameEN: String,
@@ -73,10 +81,17 @@ interface AnimeAPI {
         @Field("Source") Source: String,
         @Field("Picture") Picture: String):Call<AnimeClass>
 
-    @DELETE("anime/{id}")
+
+    @DELETE("delete/{id}")
     fun deleteAnime(
         @Path("id") id: Int
     ): Call<AnimeClass>
+
+    @GET("login/{username}/{password}")
+    fun userLogin(
+        @Path("username") username:String,
+        @Path("password") password:String
+    ):Call<LoginUserClass>
 
     companion object {
         fun create(): AnimeAPI {

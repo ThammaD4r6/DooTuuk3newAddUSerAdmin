@@ -1,6 +1,7 @@
 package com.example.dootuuk3
 
 
+import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -14,13 +15,16 @@ import com.example.dootuuk3.databinding.AnimeItemLayoutBinding
 class AnimeAdapter (val items :List<AnimeClass>, val context: Context):
     RecyclerView.Adapter<AnimeAdapter.ViewHolder>() {
 
+
     inner class ViewHolder(view:View, val binding: AnimeItemLayoutBinding): RecyclerView.ViewHolder(view){
         init {
+
+
             binding.Picture.setOnClickListener{
                 val itemQ = items[adapterPosition]
 
                 val contextView: Context = view.context
-                val intent = Intent(view.context, AllDetailActivity::class.java)
+                val intent = Intent(view.context, DetailAdapter::class.java)
 
                 intent.putExtra("NameTH",itemQ.NameTH)
                 intent.putExtra("NameJP",itemQ.NameJP)
@@ -57,5 +61,8 @@ class AnimeAdapter (val items :List<AnimeClass>, val context: Context):
 
     override fun getItemCount(): Int {
         return items.size
+    }
+    interface OnItemClickListener {
+        fun onItemClick(item: ClipData.Item)
     }
 }

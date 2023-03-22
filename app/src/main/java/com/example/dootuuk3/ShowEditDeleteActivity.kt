@@ -67,8 +67,7 @@ class ShowEditDeleteActivity : AppCompatActivity() {
                             ))
                         )
                     }
-                    bindingShow.recyclerView.adapter =
-                        EditAnimesAdapter(animeListED, applicationContext)
+                    bindingShow.recyclerView.adapter = EditAnimesAdapter(animeListED, applicationContext)
                 }
 
                 override fun onFailure(call: Call<List<AnimeClass>>, t: Throwable) {

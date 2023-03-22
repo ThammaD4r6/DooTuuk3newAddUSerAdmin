@@ -13,11 +13,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.user.setOnClickListener(){
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-
-        }
         binding.current.setOnClickListener() {
             val intent = Intent(this, AllAnimeActivity::class.java)
             startActivity(intent)
@@ -32,6 +27,10 @@ class MainActivity : AppCompatActivity() {
         }
         binding.add.setOnClickListener() {
             val intent = Intent(this, InsertActivity::class.java)
+            startActivity(intent)
+        }
+        binding.user.setOnClickListener() {
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }
